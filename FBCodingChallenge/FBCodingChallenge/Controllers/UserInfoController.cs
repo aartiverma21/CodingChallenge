@@ -19,15 +19,11 @@ namespace FBCodingChallenge.Controllers
 
         public ActionResult SignupView()
         {
-            UserModel userinfo = new UserModel();
-            userinfo.UserName = "Aarti Verma";
-            userinfo.EmailAddress = "aartichoudhary21@gmail.com";
-            userinfo.Password = "123";
-            AddUser(userinfo);
             return View();
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddUser(UserModel userinfo)
         {
             _uxMtIntegration.AddUser(userinfo);
