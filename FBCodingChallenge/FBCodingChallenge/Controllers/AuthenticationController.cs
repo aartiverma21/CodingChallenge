@@ -45,9 +45,20 @@ namespace FBCodingChallenge.Controllers
         [HttpGet]
         public ActionResult SignInUser(UserModel userinfo)
         {
-            _uxMtIntegration.GetUser(userinfo);
-            SaveUserSessionInfo(userinfo);
-            return RedirectToAction("Index", "Home");
+            if (ModelState.IsValid)
+            {
+                bool uservalid = _uxMtIntegration.GetUser(userinfo);
+                if (uservalid == true)
+                {
+                    SaveUserSessionInfo(userinfo);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                }
+            }
+            return View("SignIn");
         }
 
         public void SaveUserSessionInfo(UserModel userinfo)

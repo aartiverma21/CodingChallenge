@@ -37,9 +37,10 @@ namespace FBMiddleTier.Repository
             _userContext.SaveChanges();
         }
 
-        public void GetUser(User entity)
+        public bool GetUser(User entity)
         {
-            _userContext.UserDetail.SqlQuery("Select * from userdetailtable Where EmailAddress ="+entity.EmailAddress);
+            bool userValid  =_userContext.UserDetail.Any(u => u.EmailAddress == entity.EmailAddress && u.Password == entity.Password);
+            return userValid;
         }
     }
 }
