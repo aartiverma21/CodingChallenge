@@ -17,18 +17,7 @@ namespace FBCodingChallenge.Controllers
         {
         }
 
-        public ActionResult SignupView()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult AddUser(UserModel userinfo)
-        {
-            _uxMtIntegration.AddUser(userinfo);
-            return new EmptyResult();
-        }
+       
 
         //GET: UserInfo
         public ActionResult Index()

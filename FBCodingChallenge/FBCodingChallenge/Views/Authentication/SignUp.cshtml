@@ -1,9 +1,9 @@
 ﻿@model FBCodingChallenge.Models.UserModel
 @{
-    ViewBag.Title = "SignupView";
+    ViewBag.Title = "SignUp";
 }
 
-@using (Html.BeginForm("AddUser", "UserInfo", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("AddUser", "Authentication", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
 

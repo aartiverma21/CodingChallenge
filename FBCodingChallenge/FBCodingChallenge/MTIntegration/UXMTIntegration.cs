@@ -20,5 +20,11 @@ namespace FBCodingChallenge.MTIntegration
             User userEntity = user.getEntity();
             userRepository.AddUser(userEntity);
         }
+        public void GetUser(UserModel user)
+        {
+            User userEntity = user.getEntity();
+            userRepository.GetUser(userEntity);
+        }
+       
     }
 }

@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Data.Entity;
+using System.Data.Entity.Core.Common.CommandTrees;
+using System.Data.Sql;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -31,6 +35,11 @@ namespace FBMiddleTier.Repository
         {
             _userContext.UserDetail.Add(entity);
             _userContext.SaveChanges();
+        }
+
+        public void GetUser(User entity)
+        {
+            _userContext.UserDetail.SqlQuery("Select * from userdetailtable Where EmailAddress ="+entity.EmailAddress);
         }
     }
 }
